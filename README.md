@@ -1,5 +1,5 @@
 ## hms
-8vir as knows as "Serphiu" blud thinks that flooding usn logs will save him 💔 
+8vir also knows as "Serphiu/Vawsyy" blud thinks that flooding usn logs will save him 💔 
 
 ## Info
 TwoTotem's / 8vir's client source tree for **Minecraft 1.21.11**.
