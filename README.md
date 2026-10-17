@@ -22,7 +22,7 @@ Built JAR files are written to `build/libs/`.
 ## Project layout
 
 ```text
-src/main/java/       Decompiled Java sources
+src/main/java/       Java sources
 src/main/resources/  Fabric metadata, mixin config, assets, font
 build.gradle         Fabric Loom build configuration
 ```
