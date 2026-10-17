@@ -1,0 +1,19 @@
+accessWidener v2 named
+accessible class net/minecraft/client/render/item/HeldItemRenderer$HandRenderType
+accessible field net/minecraft/client/render/item/HeldItemRenderer$HandRenderType renderMainHand Z
+accessible field net/minecraft/client/render/item/HeldItemRenderer$HandRenderType renderOffHand Z
+
+# HUD and Movement Access (1.21.1)
+accessible field net/minecraft/entity/Entity lastX D
+accessible field net/minecraft/entity/Entity lastY D
+accessible field net/minecraft/entity/Entity lastZ D
+accessible field net/minecraft/client/input/Input playerInput Lnet/minecraft/util/PlayerInput;
+accessible field net/minecraft/client/input/Input movementVector Lnet/minecraft/util/math/Vec2f;
+
+# Networking (PlayerMoveC2SPacket Mutability Fix)
+mutable field net/minecraft/network/packet/c2s/play/PlayerMoveC2SPacket x D
+mutable field net/minecraft/network/packet/c2s/play/PlayerMoveC2SPacket y D
+mutable field net/minecraft/network/packet/c2s/play/PlayerMoveC2SPacket z D
+mutable field net/minecraft/network/packet/c2s/play/PlayerMoveC2SPacket onGround Z
+mutable field net/minecraft/network/packet/c2s/play/PlayerMoveC2SPacket yaw F
+mutable field net/minecraft/network/packet/c2s/play/PlayerMoveC2SPacket pitch F

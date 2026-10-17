@@ -1,0 +1,9 @@
+Summary for C:\Users\Foxxy\Desktop\8vir\continuity-3.0.1-beta.1+1.21.11 (1) (2).jar
+Decompiled with CFR 0.152
+
+
+me.pepperbell.continuity.module.modules.client._531fD357ruc7
+----------------------------
+
+replaceJar(java.lang.String java.io.File )
+  Loose catch block

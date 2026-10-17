@@ -1,0 +1,109 @@
+/*
+ * Decompiled with CFR.
+ */
+package me.pepperbell.continuity.module.modules.combat;
+
+import me.pepperbell.continuity.event.events.TickListener;
+import me.pepperbell.continuity.mixin.HandledScreenMixin;
+import me.pepperbell.continuity.module.Category;
+import me.pepperbell.continuity.module.Module;
+import me.pepperbell.continuity.module.setting.ModeSetting;
+import me.pepperbell.continuity.module.setting.SliderSetting;
+import me.pepperbell.continuity.utils.EncryptedString;
+import me.pepperbell.continuity.utils.InventoryUtils;
+import net.minecraft.class_1291;
+import net.minecraft.class_1294;
+import net.minecraft.class_1657;
+import net.minecraft.class_1661;
+import net.minecraft.class_1713;
+import net.minecraft.class_1723;
+import net.minecraft.class_1735;
+import net.minecraft.class_437;
+import net.minecraft.class_490;
+
+public final class _4u70P07R3f111
+extends Module
+implements TickListener {
+    private final ModeSetting<Mode> mode = new ModeSetting<Mode>(EncryptedString.of("M^|o\u00b7$d|^e"), Mode.Auto, Mode.class);
+    private final SliderSetting delay = new SliderSetting(EncryptedString.of("D*-|~e\u00b7.^~l~*.a|\u00ady"), 0.0, 10.0, 0.0, 1.0);
+    private int clock;
+
+    public _4u70P07R3f111() {
+        super(EncryptedString.of("A-~u\u00ad*t.^o\u00b7- ^-~P\u00b7|*o^|^\u00adt^~ .\u00b7R~\u00ad\u00ade~~f~*.`i~-l-~l"), EncryptedString.of("R$^-~e.-f*\u00ad*i*.^l.*^_l-^s\u00b7^\u00b7 *`\u00b7y^-.o$~**u|`r$^ \u00b7\u00ad^^h`|\u00ad~o-*^t|\u00b7b~*-^a`***r*\u00b7` ||w$|$*i_*t\u00b7$~_h|.~` _`^*p\u00ad--\u00ado..t\u00ad$$i`$o~$n..s"), -1, Category.COMBAT);
+        this.addSettings(this.mode, this.delay);
+    }
+
+    @Override
+    public void onEnable() {
+        this.eventManager.add(TickListener.class, this);
+        this.clock = 0;
+        super.onEnable();
+    }
+
+    @Override
+    public void onDisable() {
+        this.eventManager.remove(TickListener.class, this);
+        super.onDisable();
+    }
+
+    @Override
+    public void onTick() {
+        class_437 class_4372 = this.mc.field_1755;
+        if (class_4372 instanceof class_490) {
+            int slot;
+            int i;
+            int emptySlot;
+            class_1661 inventory;
+            class_490 inventoryScreen = (class_490)class_4372;
+            if (this.mode.isMode(Mode.Hover)) {
+                class_1735 focusedSlot = ((HandledScreenMixin)inventoryScreen).getFocusedSlot();
+                if (focusedSlot == null) {
+                    return;
+                }
+                inventory = this.mc.field_1724.method_31548();
+                emptySlot = -1;
+                for (i = 0; i <= 8; ++i) {
+                    if (!inventory.method_5438(i).method_7960()) continue;
+                    emptySlot = i;
+                    break;
+                }
+                if (emptySlot == -1) {
+                    return;
+                }
+                if (InventoryUtils.isThatSplash((class_1291)class_1294.field_5915.comp_349(), 1, 1, focusedSlot.method_7677())) {
+                    if (this.clock < this.delay.getValueInt()) {
+                        ++this.clock;
+                        return;
+                    }
+                    this.mc.field_1761.method_2906(((class_1723)inventoryScreen.method_17577()).field_7763, focusedSlot.method_34266(), emptySlot, class_1713.field_7791, (class_1657)this.mc.field_1724);
+                    this.clock = 0;
+                }
+            }
+            if (this.mode.isMode(Mode.Auto) && (slot = InventoryUtils.findPot((class_1291)class_1294.field_5915.comp_349(), 1, 1)) != -1) {
+                inventory = this.mc.field_1724.method_31548();
+                emptySlot = -1;
+                for (i = 0; i <= 8; ++i) {
+                    if (!inventory.method_5438(i).method_7960()) continue;
+                    emptySlot = i;
+                    break;
+                }
+                if (emptySlot == -1) {
+                    return;
+                }
+                if (this.clock < this.delay.getValueInt()) {
+                    ++this.clock;
+                    return;
+                }
+                this.mc.field_1761.method_2906(((class_1723)inventoryScreen.method_17577()).field_7763, slot, emptySlot, class_1713.field_7791, (class_1657)this.mc.field_1724);
+                this.clock = 0;
+            }
+        }
+    }
+
+    public static enum Mode {
+        Auto,
+        Hover;
+
+    }
+}
+
