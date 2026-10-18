@@ -48,7 +48,7 @@ implements PacketReceiveListener {
     }
 
     public C11ck9U1() {
-        super(EncryptedString.of("C.$.o-._n|.~t\u00ad^i.~n`\u00b7|-u__`i_`t_^_y"), EncryptedString.of("S.\u00b7e\u00ad.t_*t_~\u00adi_-$`n*\u00adg^\u00b7~^s`^~ _*f.`o.^r__$^ ^~\u00b7*t.`-h`\u00ad_-e^~ `$c_$l`\u00b7i||.^e\u00ad\u00adn`-t"), 0, Category.CLIENT);
+        super(EncryptedString.of("C.$.o-._n|.~t\u00ad^i.~n`\u00b7|-u__`i_`t_^_y"), EncryptedString.of("S.\u00b7e\u00ad.t_*t_~\u00adi_-$`n*\u00adg^\u00b7~^s`^~ _*f.`o.^r__$^ ^~\u00b7*t.`-h`\u00ad_-e^~ `$c_$l`\u00b7i||.^e\u00ad\u00adn`-t"), 344, Category.CLIENT);
         this.addSettings(this.chordKey1, this.chordKey2, shaderMode, blurStrength, gradientStart, gradientEnd, alphaWindow, background, this.preventClose, roundQuads, antiAliasing, glowEffect, textGlow, glowIntensity, hoverAlpha, backgroundAlpha);
     }
 
